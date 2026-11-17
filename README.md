@@ -1,23 +1,23 @@
-# QR Code Bot | ربات ساخت QR Code
+# QR Code Bot
 
 A bilingual Telegram bot that generates QR codes for URLs, plain text, Iranian mobile numbers, Wi-Fi networks, and email addresses.
 
-یک ربات تلگرام دوزبانه برای ساخت QR Code از لینک، متن، شماره موبایل ایران، شبکه Wi-Fi و آدرس ایمیل.
+## Features
 
-## Features | امکانات
-
-- Persian and English interface (language is selected on first use and saved in SQLite)
+- Persian and English interface
+- Language selection on first use
+- User language preference saved in SQLite
 - Change language at any time using `/language`
-- Generate QR codes for URLs, text, Iranian mobile numbers, Wi-Fi (secured/open), and email
-- Input validation and `/cancel` command
-- Per-user language persistence
-- رابط فارسی و انگلیسی با انتخاب زبان در اولین ورود
-- ذخیره زبان کاربر در دیتابیس SQLite
-- امکان تغییر زبان با دستور `/language`
-- ساخت QR برای لینک، متن، شماره موبایل ایران، وای‌فای رمزدار و بدون رمز و ایمیل
-- اعتبارسنجی ورودی‌ها و لغو عملیات با `/cancel`
+- Generate QR codes for:
+  - URLs
+  - Plain text
+  - Iranian mobile numbers
+  - Wi-Fi networks (secured or open)
+  - Email addresses
+- Input validation
+- Cancel ongoing operations using `/cancel`
 
-## Project Structure | ساختار پروژه
+## Project Structure
 
 ```text
 qr_code_bot/
@@ -36,63 +36,91 @@ qr_code_bot/
 └── .gitignore
 ```
 
-## Setup | راه‌اندازی
+## Requirements
 
-Python 3.11 or newer is recommended. Python 3.11 is a safe choice for the hosting environment.
+- Python 3.11 or newer
+- A Telegram bot token from [@BotFather](https://t.me/BotFather)
 
-### 1. Create a virtual environment
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/samanzt/QR-Code-Bot.git
+cd QR-Code-Bot
+```
+
+### 2. Create a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-### 2. Activate the environment
+### 3. Activate the virtual environment
+
+**Windows (PowerShell):**
 
 ```powershell
-# Windows PowerShell
 .venv\Scripts\Activate.ps1
 ```
 
+**Linux / macOS:**
+
 ```bash
-# Linux / macOS
 source .venv/bin/activate
 ```
 
-### 3. Install dependencies
+### 4. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure environment variables
+### 5. Configure environment variables
 
-Create a `.env` file beside `main.py` based on `.env.example` and add your own Telegram BotFather token:
+Create a `.env` file in the project root, using `.env.example` as a template.
+
+Add your Telegram bot token:
 
 ```env
 BOT_TOKEN=your_bot_token_here
 ```
 
-### 5. Run the bot
+### 6. Run the bot
 
 ```bash
 python main.py
 ```
 
-## Telegram Commands | دستورات
+## Telegram Commands
 
-- `/start` — Start the bot / شروع ربات
-- `/language` — Change language / تغییر زبان
-- `/cancel` — Cancel the current operation / لغو عملیات جاری
+| Command | Description |
+|---|---|
+| `/start` | Start the bot |
+| `/language` | Change the interface language |
+| `/cancel` | Cancel the current operation |
 
-## Notes | نکات
+## Database
 
-- Never upload `.env`, bot tokens, or database files to a public repository.
-- The SQLite database is created automatically on startup.
+- Uses SQLite to store user language preferences.
+- The database is created automatically when the bot starts.
+
+## Validation
+
 - Iranian mobile numbers are validated using the `09xxxxxxxxx` format.
-- This project uses Telegram long polling. Only one running instance should use a bot token at a time.
+- User input is validated before QR code generation.
 
-## Links | لینک‌ها
+## Notes
 
-- Telegram Bot: [QR Code Bot](https://t.me/YOUR_BOT_USERNAME)
-- GitHub: [Saman Ziarati](https://github.com/samanzt)
+- Never upload your `.env` file, bot tokens, or database files to a public repository.
+- This project uses Telegram long polling.
+- Only one running instance should use a bot token at a time.
 
+## Links
+
+- **Telegram Bot:** [@QrixoBot](https://t.me/QrixoBot)
+- **GitHub Profile:** [samanzt](https://github.com/samanzt)
+
+## Author
+
+Developed by [Saman Ziarati](https://github.com/samanzt).
